@@ -14,9 +14,9 @@ Create a symlink from the `project` folder to your TileMill projects directory
 
     $ ln -s /path/to/free_flying_map/project ~/Documents/MapBox/project/free_flying_map
 
-Then setup your (hstore and postgis ready) PostgreSQL database using a OSM
-Switzerland dump from [Geofabrik](http://download.geofabrik.de/osm/europe/)
-with osm2pgsql:
+Then setup your (hstore and postgis ready) PostgreSQL database (user: osm, pw:
+osm, db: osm) using a OSM Switzerland dump from
+[Geofabrik](http://download.geofabrik.de/osm/europe/) with osm2pgsql:
 
     $ wget http://download.geofabrik.de/osm/europe/switzerland.osm.bz2
     $ osm2pgsql -E 3857 --slim -C 2048 -c -u -k -H localhost -d osm switzerland.osm.bz2
