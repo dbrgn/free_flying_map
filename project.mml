@@ -1,0 +1,242 @@
+{
+  "bounds": [
+    5.9365,
+    45.8669,
+    10.4793,
+    47.8057
+  ],
+  "center": [
+    5.9404,
+    46.2379,
+    10
+  ],
+  "format": "png8",
+  "interactivity": false,
+  "minzoom": 0,
+  "maxzoom": 18,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "0_style.mss",
+    "1_free_flying.mss"
+  ],
+  "Layer": [
+    {
+      "id": "countries",
+      "name": "countries",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "geometry": "polygon",
+      "Datasource": {
+        "file": "http://mapbox-geodata.s3.amazonaws.com/natural-earth-1.4.0/cultural/10m-admin-0-countries.zip",
+        "type": "shape",
+        "id": "countries",
+        "project": "free_flying_map",
+        "srs": null
+      }
+    },
+    {
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT osm_id, way, name\nFROM planet_osm_polygon\nWHERE \"natural\" = 'water') water",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm",
+        "id": "water",
+        "project": "free_flying_map",
+        "srs": null
+      },
+      "id": "water",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "water"
+    },
+    {
+      "geometry": "linestring",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT *\nFROM planet_osm_line\nWHERE waterway IS NOT NULL) waterways",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm"
+      },
+      "id": "waterways",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "waterways"
+    },
+    {
+      "geometry": "linestring",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT osm_id, way, railway\nFROM planet_osm_line) railways",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm"
+      },
+      "id": "railways",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "railways"
+    },
+    {
+      "geometry": "linestring",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT osm_id, way, highway\nFROM planet_osm_line\nWHERE highway IS NOT NULL) roads",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm"
+      },
+      "id": "roads",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "roads"
+    },
+    {
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT osm_id, way, building\nFROM planet_osm_polygon\nWHERE building IS NOT NULL) buildings",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm"
+      },
+      "id": "buildings",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "buildings"
+    },
+    {
+      "geometry": "point",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT osm_id, way, place, name\nFROM planet_osm_point\nWHERE place IS NOT NULL) places",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm"
+      },
+      "id": "places",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "places"
+    },
+    {
+      "geometry": "linestring",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT osm_id, way, name, aerialway\nFROM planet_osm_line\nWHERE \"aerialway\" IS NOT NULL) aerialways",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm",
+        "id": "aerialways",
+        "project": "free_flying_map",
+        "srs": null
+      },
+      "id": "aerialways",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "aerialways"
+    },
+    {
+      "geometry": "point",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT osm_id, way, name, aerialway\nFROM planet_osm_point\nWHERE \"aerialway\" IS NOT NULL) aerialways",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm",
+        "id": "aerialway_points",
+        "project": "free_flying_map",
+        "srs": null
+      },
+      "id": "aerialway_points",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "aerialway_points"
+    },
+    {
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT osm_id, way, name, operator, sport,\n    tags->'free_flying:site' AS free_flying_site,\n    tags->'free_flying:official' AS free_flying_official,\n    tags->'free_flying:paragliding' AS free_flying_paragliding,\n    tags->'free_flying:hanggliding' AS free_flying_hanggliding,\n    tags->'free_flying:rigid' AS free_flying_rigid,\n    tags->'free_flying:site_orientation' AS free_flying_site_orientation\nFROM planet_osm_polygon\nWHERE sport IN ('paragliding', 'hanggliding', 'free_flying')) free_flying_areas",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm",
+        "id": "free_flying_areas",
+        "project": "free_flying_map",
+        "srs": null
+      },
+      "id": "free_flying_areas",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "free_flying_areas"
+    },
+    {
+      "geometry": "point",
+      "Datasource": {
+        "type": "postgis",
+        "table": "(SELECT osm_id, way, name, operator, sport,\n    tags->'free_flying:site' AS free_flying_site,\n    tags->'free_flying:official' AS free_flying_official,\n    tags->'free_flying:paragliding' AS free_flying_paragliding,\n    tags->'free_flying:hanggliding' AS free_flying_hanggliding,\n    tags->'free_flying:rigid' AS free_flying_rigid,\n    tags->'free_flying:site_orientation' AS free_flying_site_orientation\nFROM planet_osm_point\nWHERE sport IN ('paragliding', 'hanggliding', 'free_flying')) free_flying_nodes",
+        "extent": "",
+        "key_field": "osm_id",
+        "geometry_field": "way",
+        "host": "localhost",
+        "user": "osm",
+        "password": "osm",
+        "dbname": "osm",
+        "id": "free_flying",
+        "project": "free_flying_map",
+        "srs": null
+      },
+      "id": "free_flying_nodes",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "name": "free_flying_nodes"
+    }
+  ],
+  "name": "FreeFlying Map",
+  "description": "Map that shows paragliding / hanggliding related information.",
+  "attribution": ""
+}
