@@ -18,7 +18,7 @@ Then setup your (hstore and postgis ready) PostgreSQL database (user: osm, pw:
 osm, db: osm) using a OSM Switzerland dump from
 [Geofabrik](http://download.geofabrik.de/osm/europe/) with osm2pgsql:
 
-    $ wget http://download.geofabrik.de/osm/europe/switzerland.osm.bz2
+    $ wget http://download.geofabrik.de/openstreetmap/europe/switzerland.osm.bz2
     $ osm2pgsql -E 3857 --slim -C 2048 -c -u -k -H localhost -d osm switzerland.osm.bz2
 
 Contributions
