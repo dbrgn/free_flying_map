@@ -195,8 +195,8 @@
     {
       "Datasource": {
         "type": "postgis",
-        "table": "(SELECT osm_id, way, name, operator, sport,\n    tags->'free_flying:site' AS free_flying_site,\n    tags->'free_flying:official' AS free_flying_official,\n    tags->'free_flying:paragliding' AS free_flying_paragliding,\n    tags->'free_flying:hanggliding' AS free_flying_hanggliding,\n    tags->'free_flying:rigid' AS free_flying_rigid,\n    tags->'free_flying:site_orientation' AS free_flying_site_orientation\nFROM planet_osm_polygon\nWHERE sport IN ('paragliding', 'hanggliding', 'free_flying')) free_flying_areas",
-        "extent": "",
+        "table": "(SELECT osm_id, way, name, operator, sport,\n    tags->'free_flying:site' AS free_flying_site,\n    tags->'free_flying:official' AS free_flying_official,\n    tags->'free_flying:paragliding' AS free_flying_paragliding,\n    tags->'free_flying:hanggliding' AS free_flying_hanggliding,\n    tags->'free_flying:rigid' AS free_flying_rigid,\n    tags->'free_flying:site_orientation' AS free_flying_site_orientation,\n    tags->'free_flying:school' AS free_flying_school,\n    tags->'free_flying:repair' AS free_flying_repair,\n    tags->'free_flying:shop' AS free_flying_shop,\n    tags->'free_flying:club' AS free_flying_club\nFROM planet_osm_polygon\nWHERE sport IN ('paragliding', 'hanggliding', 'free_flying')) free_flying_areas",
+        "extent": "561670.72,5387550.85,1815234.29,6165046.19",
         "key_field": "osm_id",
         "geometry_field": "way",
         "host": "localhost",
@@ -205,37 +205,55 @@
         "dbname": "osm",
         "id": "free_flying_areas",
         "project": "free_flying_map",
-        "srs": null
+        "srs": null,
+        "extent_cache": "auto"
       },
       "id": "free_flying_areas",
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "name": "free_flying_areas"
+      "name": "free_flying_areas",
+      "extent": [
+        5.045573924184161,
+        43.49453646494208,
+        16.306527069648478,
+        48.34859729762966
+      ],
+      "advanced": {}
     },
     {
       "geometry": "point",
       "Datasource": {
         "type": "postgis",
-        "table": "(SELECT osm_id, way, name, operator, sport,\n    tags->'free_flying:site' AS free_flying_site,\n    tags->'free_flying:official' AS free_flying_official,\n    tags->'free_flying:paragliding' AS free_flying_paragliding,\n    tags->'free_flying:hanggliding' AS free_flying_hanggliding,\n    tags->'free_flying:rigid' AS free_flying_rigid,\n    tags->'free_flying:site_orientation' AS free_flying_site_orientation\nFROM planet_osm_point\nWHERE sport IN ('paragliding', 'hanggliding', 'free_flying')) free_flying_nodes",
-        "extent": "",
+        "table": "(SELECT osm_id, way, name, operator, sport,\n    tags->'free_flying:site' AS free_flying_site,\n    tags->'free_flying:official' AS free_flying_official,\n    tags->'free_flying:paragliding' AS free_flying_paragliding,\n    tags->'free_flying:hanggliding' AS free_flying_hanggliding,\n    tags->'free_flying:rigid' AS free_flying_rigid,\n    tags->'free_flying:site_orientation' AS free_flying_site_orientation,\n    tags->'free_flying:school' AS free_flying_school,\n    tags->'free_flying:repair' AS free_flying_repair,\n    tags->'free_flying:shop' AS free_flying_shop,\n    tags->'free_flying:club' AS free_flying_club\nFROM planet_osm_point\nWHERE sport IN ('paragliding', 'hanggliding', 'free_flying')) free_flying_nodes",
+        "extent": "646440.698790043,5746593.72270666,1194143.11318483,6086245.01230185",
         "key_field": "osm_id",
         "geometry_field": "way",
         "host": "localhost",
         "user": "osm",
         "password": "osm",
         "dbname": "osm",
-        "id": "free_flying",
+        "id": "free_flying_nodes",
         "project": "free_flying_map",
-        "srs": null
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+        "extent_cache": "auto"
       },
       "id": "free_flying_nodes",
       "class": "",
       "srs-name": "900913",
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
-      "name": "free_flying_nodes"
+      "name": "free_flying_nodes",
+      "extent": [
+        5.807075599999995,
+        45.788957200000006,
+        10.727170100000002,
+        47.87596760000001
+      ],
+      "advanced": {}
     }
   ],
+  "scale": 1,
+  "metatile": 2,
   "name": "FreeFlying Map",
   "description": "Map that shows paragliding / hanggliding related information.",
   "attribution": ""

@@ -48,6 +48,10 @@
     marker-fill:#609b54;
     marker-line-color:#284122;
   }
+  [free_flying_shop = "yes"] {
+    marker-fill:#577eb9;
+    marker-line-color:#3a557d;
+  }
   [zoom > 10] {
     ::labels {
       text-name:"[name]";
